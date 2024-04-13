@@ -26,6 +26,27 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+* {
+  @apply transition;
+}
+
+h1 {
+  @apply text-5xl;
+}
+
+h2 {
+  line-height: 1.5rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: white !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

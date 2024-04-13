@@ -7,7 +7,17 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      desktop: "1024px",
+    },
     extend: {
+      height: {
+        "screen-minus-nav": "calc(100vh - 6rem)",
+      },
+      minHeight: {
+        "screen-minus-nav-footer": "calc(100vh - 6rem - 205px)",
+        "screen-minus-nav": "calc(100vh - 6rem)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

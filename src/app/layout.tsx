@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Barlow({ weight: ["100", "400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} min-h-screen px-4 desktop:px-10`}>
+        <Navbar />
+        <main className="flex flex-col min-h-screen-minus-nav items-center justify-between mt-10">
+          {children}
+        </main>
+        <Footer />
+      </body>
     </html>
   );
 }
