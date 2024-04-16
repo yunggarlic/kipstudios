@@ -7,11 +7,12 @@ const Gallery = ({ numImages }: GalleryProps) => {
   return (
     <Carousel
       swiperOptions={{
-        className: "h-screen",
+        className: "h-screen w-3/4",
         spaceBetween: 30,
         slidesPerView: 2,
         grid: { rows: 2 },
-        loop: false,
+        threshold: 10,
+        loop: true,
         modules: [Grid],
       }}
     >

@@ -2,18 +2,18 @@ export const spaceFeatures = [
   {
     heading: "Furniture & Props",
     description:
-      "The studio is curated with a rotating selection of furniture, props, art, light fixtures, and plants.",
+      "Our Bucktown studio boasts a vibrant selection of modern furniture, versatile props, and inspiring art, perfect for photographers looking to elevate their shoots in the heart of Chicago.",
     checkerboardColor: "blue",
   },
   {
     heading: "Studio Rates",
-    description: "Flexible rates for different event types.",
+    description: "Competitive and flexible studio rates tailored for every type of event, from intimate portraits and commercial shoots to birthday and engagement parties in Chicagoland.",
     checkerboardColor: "indianred",
   },
   {
     heading: "Production Packages",
     description:
-      "We offer a variety of gear and production packages to suit your needs.",
+      "Featuring a comprehensive range of production gear from high-tech cameras to advanced lighting solutions, our packages are designed to meet the diverse needs of Chicago's photography community.",
     checkerboardColor: "gold",
   },
 ];

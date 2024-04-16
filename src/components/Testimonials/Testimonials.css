@@ -2,3 +2,7 @@
     @apply static;
     color: var(--foreground-rgb);
 }
+
+.swiper-slide{
+    @apply h-auto;
+}

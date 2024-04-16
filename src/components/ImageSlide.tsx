@@ -1,6 +1,6 @@
 const ImageSlide = ({ src }: ImageSlideProps) => {
   return (
-    <div className="overflow-hidden rounded">
+    <div className="h-full overflow-hidden rounded">
       <img
         className="h-full w-full object-cover aspect-square"
         height="100%"
