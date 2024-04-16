@@ -19,10 +19,29 @@ interface BookingCardProps {
   href: string;
 }
 
-interface CarouselProps {
+interface ContentSplitProps {
   children: React.ReactNode[];
 }
 
 interface ImageSlideProps {
   src: string;
 }
+
+interface TestimonialProps {
+  testimonial: Testimonial;
+}
+
+interface TestimonialsProps {
+  testimonials: Testimonial[];
+}
+
+interface GalleryProps {
+  numImages: number;
+}
+
+type Testimonial = {
+  eventType: string;
+  author: string;
+  quote: string;
+  date: string;
+};

@@ -7,8 +7,8 @@ const SpaceFeature = ({
   checkerboardColor,
 }: SpaceFeatureProps) => {
   return (
-    <div className="flex gap-4">
-      <div>
+    <div className="flex items-center gap-4 button-default p-4 !rounded">
+      <div className="w-1/5 flex items-center">
         <Checkerboard color={checkerboardColor} />
       </div>
       <div className="flex flex-col w-full gap-2">

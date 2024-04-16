@@ -1,21 +1,34 @@
-import Carousel from "../components/Carousel";
-import Feature from "../components/SpaceFeature";
-import ImageSlide from "../components/ImageSlide";
-import { spaceFeatures as feats } from "./content";
+import { spaceFeatures as feats, testimonials } from "./content";
+
+import {
+  Carousel,
+  ContentSplit,
+  Testimonials,
+  ScheduleTour,
+  SpaceFeature as Feature,
+  ImageSlide,
+  Gallery
+} from "../components";
+import React from "react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-full desktop:flex-row w-full gap-4 desktop:gap-10">
-      <LeftColumn />
-      <RightColumn />
-    </div>
+    <React.Fragment>
+      <ContentSplit>
+        <LeftColumn />
+        <RightColumn />
+      </ContentSplit>
+      <Testimonials testimonials={testimonials} />
+      <Gallery numImages={36} />
+      <ScheduleTour />
+    </React.Fragment>
   );
 }
 
 const LeftColumn = () => {
   const Heading = () => {
     return (
-      <div>
+      <div className="flex flex-col gap-4">
         <h1>KIP studios</h1>
         <span>
           1200 sq ft flexible production space available for by the hour
@@ -25,17 +38,15 @@ const LeftColumn = () => {
     );
   };
 
-  const SpaceFeatures = ({ features }: SpaceFeaturesProps) => {
-    return;
-  };
-
   return (
     <div className="relative order-2 desktop:order-1 desktop:w-1/2">
       <div className="desktop:sticky top-10 flex flex-col desktop:h-fit gap-10">
         <Heading />
-        {feats.map((feat) => (
-          <Feature key={feat.heading} {...feat} />
-        ))}
+        <div className="flex flex-col gap-4">
+          {feats.map((feat) => (
+            <Feature key={feat.heading} {...feat} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -43,12 +54,16 @@ const LeftColumn = () => {
 
 const RightColumn = () => {
   return (
-    <div className="desktop:w-1/2 h-full order-1 desktop:order-2">
+    <div className="desktop:w-1/2 h-auto order-1 desktop:order-2">
       <Carousel>
-        <ImageSlide src="kip-profile.webp" />
-        <ImageSlide src="kip-profile2.webp" />
-        <ImageSlide src="kip-profile3.webp" />
-        <ImageSlide src="kip-profile4.webp" />
+        {[1, 2, 3, 4, 5].map((i) => {
+          return (
+            <ImageSlide
+              key={i}
+              src={`images/kip-profile${i}.webp`}
+            />
+          );
+        })}
       </Carousel>
     </div>
   );

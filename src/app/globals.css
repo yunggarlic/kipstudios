@@ -4,8 +4,9 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+  --checkerboard-light: #fafafa;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    --checkerboard-light: #030305;
   }
 }
 
@@ -24,6 +26,16 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  background-image: linear-gradient(
+      45deg,
+      var(--checkerboard-light) 25%,
+      transparent 25%
+    ),
+    linear-gradient(-45deg, var(--checkerboard-light) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--checkerboard-light) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--checkerboard-light) 75%);
+  background-size: 192px 192px;
+  background-position: 0 0, 0 96px, 96px -96px, -96px 0px;
 }
 
 * {
@@ -43,12 +55,20 @@ h3 {
   @apply text-xl;
 }
 
-.swiper-pagination-bullet-active{
+.swiper-pagination-bullet-active {
   background-color: white !important;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .button-default {
+    @apply border-2 border-gray-600 hover:border-black dark:hover:border-white bg-black bg-opacity-0 hover:bg-opacity-10 dark:bg-opacity-60 dark:hover:bg-opacity-80;
+  }
+
+  .shadow-standard {
+    box-shadow: 0 0 45px rgba(44, 255, 44, 0.7);
   }
 }

@@ -3,10 +3,9 @@ const BookingCard = ({ href, copy }: BookingCardProps) => {
     <a
       href={href}
       target="_blank"
-      className="w-full desktop:w-[unset] flex flex-col h-full items-center w-1/3 border rounded p-4 desktop:p-10"
+      className="w-full desktop:w-1/3 desktop:h-[300px] text-4xl flex flex-col items-center justify-center button-default rounded p-4 desktop:p-10"
     >
-      <span>{copy}</span>
-      <div>Lorem ipsum</div>
+      {copy}
     </a>
   );
 };

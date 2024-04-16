@@ -1,18 +1,24 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { SwiperOptions } from "swiper/types";
 import "swiper/css";
-import "swiper/css/pagination";
 
-const Carousel = ({ children }: CarouselProps) => {
+interface CarouselProps {
+  children: React.ReactNode[];
+  swiperOptions?: SwiperOptions;
+}
+
+const Carousel = ({ children, swiperOptions }: CarouselProps) => {
   return (
     <Swiper
       slidesPerView={1}
       spaceBetween={18}
       pagination={{ clickable: true }}
-      navigation
-      scrollbar={{ draggable: true }}
+      loop={true}
       modules={[Pagination]}
+      {...swiperOptions}
+      className={`w-full ${swiperOptions?.className}`}
     >
       {children &&
         children.map((el, i) => (

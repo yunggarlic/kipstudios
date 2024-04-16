@@ -1,8 +1,10 @@
+"use client";
 import Link from "next/link";
+import { BookNow } from "./";
 
 const Navbar = () => {
   return (
-    <nav className="w-full flex justify-between items-center h-[100px]">
+    <nav className="absolute top-0 left-0 px-4 desktop:px-10 w-full h-24 flex justify-between items-center gap-10">
       <Home />
       <BookNow />
     </nav>
@@ -13,19 +15,28 @@ const Home = () => {
   return (
     <div className="w-1/2 desktop:w-[unset] flex flex-col">
       <Link href="/" className="lowercase">
-        Kip Studios
+        <div className="flex flex-col">
+          <span className="text-4xl">KIP</span>
+            <span className="lowercase hidden desktop:block">
+              A flexible, immersive space for creatives
+            </span>
+        </div>
       </Link>
-      <span className="lowercase">
-        A flexible, immersive space for creatives
-      </span>
     </div>
   );
 };
 
-const BookNow = () => (
-  <Link className="text-center w-1/2 desktop:w-[unset] p-4 rounded border-2 hover:border-blue-200 hover:bg-blue-900" href="/book-now">
-    Book Now
-  </Link>
-);
+const NavLinks = () => {
+  return (
+    <div className="flex gap-10">
+      <Link href="/about" className="lowercase">
+        About
+      </Link>
+      <Link href="/contact" className="lowercase">
+        Contact
+      </Link>
+    </div>
+  );
+};
 
 export default Navbar;
