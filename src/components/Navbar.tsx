@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="absolute top-0 left-0 px-4 desktop:px-10 w-full h-24 flex justify-between items-center gap-10">
       <Home />
-      <NavLinks />
+      {/* <NavLinks /> */}
       <BookNow />
     </nav>
   );
@@ -28,7 +28,7 @@ const Home = () => {
 };
 
 const NavLinks = () => {
-  const paths = ["about", "contact", "gallery"];
+  const paths = ["gallery"];
   return (
     <div className="flex gap-10">
       {paths.map((path) => (
@@ -38,8 +38,12 @@ const NavLinks = () => {
   );
 };
 
-const NavLink = ({ href, copy }) => {
-  const toSentenceCase = (str) =>
+interface NavLinkProps {
+  href: string;
+  copy: string;
+}
+const NavLink = ({ href, copy }: NavLinkProps) => {
+  const toSentenceCase = (str: string) =>
     str.toLowerCase().charAt(0).toUpperCase() + str.slice(1);
 
   return (

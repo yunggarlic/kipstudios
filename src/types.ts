@@ -25,6 +25,7 @@ interface ContentSplitProps {
 
 interface ImageSlideProps {
   src: string;
+  i: number;
 }
 
 interface TestimonialProps {

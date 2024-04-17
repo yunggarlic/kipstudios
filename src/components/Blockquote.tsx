@@ -10,11 +10,9 @@ const Blockquote = ({ quote, citation }: BlockquoteProps) => {
     <div className="flex flex-col gap-4">
       <div className="flex gap-2">
         <span aria-hidden className="leading-none text-4xl h-full">
-          "
+          &quot;
         </span>
-        <blockquote>
-          {quote}"
-        </blockquote>
+        <blockquote>{quote}&quot;</blockquote>
       </div>
       <cite>— {citation}</cite>
     </div>

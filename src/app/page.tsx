@@ -7,7 +7,6 @@ import {
   ScheduleTour,
   SpaceFeature as Feature,
   ImageSlide,
-  Gallery,
 } from "../components";
 import React from "react";
 
@@ -54,9 +53,11 @@ const LeftColumn = () => {
 const RightColumn = () => {
   return (
     <div className="desktop:w-1/2 h-auto order-1 desktop:order-2">
-      <Carousel swiperOptions={{ className: "h-full" }}>
-        {[1, 2, 3, 4, 5].map((i) => {
-          return <ImageSlide key={i} src={`images/kip-profile${i}.webp`} />;
+      <Carousel className="h-full" lazy={true}>
+        {[1, 2, 3, 4, 5].map((i, index) => {
+          return (
+            <ImageSlide key={i} i={index} src={`/images/kip-profile${i}.webp`} />
+          );
         })}
       </Carousel>
     </div>

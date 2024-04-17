@@ -7,9 +7,16 @@ import "swiper/css";
 interface CarouselProps {
   children: React.ReactNode[];
   swiperOptions?: SwiperOptions;
+  lazy?: boolean;
+  className: string;
 }
 
-const Carousel = ({ children, swiperOptions }: CarouselProps) => {
+const Carousel = ({
+  children,
+  swiperOptions,
+  className,
+  lazy = false,
+}: CarouselProps) => {
   return (
     <Swiper
       slidesPerView={1}
@@ -19,7 +26,11 @@ const Carousel = ({ children, swiperOptions }: CarouselProps) => {
       mousewheel={{ enabled: true }}
       {...swiperOptions}
       modules={[Pagination, Mousewheel, ...(swiperOptions?.modules || [])]}
-      className={`w-full ${swiperOptions?.className}`}
+      className={`w-full ${className}`}
+      onSlideChange={(e) => {
+        e.slides[e.activeIndex].setAttribute("aria-hidden", "false");
+        e.slides[e.previousIndex].setAttribute("aria-hidden", "true");
+      }}
     >
       {children &&
         children.map((el, i) => (

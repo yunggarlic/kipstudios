@@ -9,14 +9,15 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
     <section className="flex flex-col w-full items-center gap-10">
       <h2>Testimonials</h2>
       <div className="flex flex-col items-center w-full gap-4">
-        <div className="relative flex items-center gap-4 desktop:gap-10 w-full desktop:w-3/5">
+        <div className="relative flex items-center gap-4 desktop:gap-10 w-full desktop:w-4/6">
           <div className="swiper-button-prev !hidden desktop:!block" />
           <Carousel
+            className="fade-out-two-sides"
             swiperOptions={{
               height: 300,
               centeredSlides: true,
               slidesPerView: 1.2,
-              spaceBetween:18,
+              spaceBetween: 18,
               autoplay: {
                 delay: 5000,
               },

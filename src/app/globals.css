@@ -69,6 +69,10 @@ h3 {
   }
 
   .shadow-standard {
-    box-shadow: 0 0 45px rgba(44, 255, 44, 0.7);
+    box-shadow: 0 0 9px white;
+  }
+
+  .fade-out-two-sides{
+    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0,0,0,0.5) 5%,rgba(0,0,0,1) 10%, rgba(0, 0, 0, 1) 50%, rgba(0,0,0,1) 90%, rgba(0,0,0,0.5) 95%, rgba(0, 0, 0, 0) 100%);
   }
 }
