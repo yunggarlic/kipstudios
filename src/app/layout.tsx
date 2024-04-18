@@ -7,8 +7,8 @@ import Footer from "../components/Footer";
 const inter = Barlow({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Kip Studios",
-  description: "Photography and event space in Chicago, IL",
+  title: "Kip Studios, Photo Studio and Event Space in Bucktown, Chicago",
+  description: "Premiere studio rental in Bucktown, Chicago. Available for by-the-hour rentals for photo and video shoots, events, and more.",
 };
 
 export default function RootLayout({
