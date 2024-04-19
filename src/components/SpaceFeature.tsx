@@ -12,7 +12,7 @@ const SpaceFeature = ({
         <Checkerboard color={checkerboardColor} />
       </div>
       <div className="flex flex-col w-full gap-2">
-        <h2>{heading}</h2>
+        <h2 className="text-2xl">{heading}</h2>
         <div className="">
           <span
             key={description}
