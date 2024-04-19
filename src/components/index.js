@@ -1,3 +1,4 @@
+export { default as Amenities } from "./Amenities";
 export { default as Blockquote } from "./Blockquote";
 export { default as BookNow } from "./BookNow";
 export { default as BookingCard } from "./BookingCard";

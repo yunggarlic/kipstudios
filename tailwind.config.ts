@@ -22,8 +22,18 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "checkerboard-default":
+          "linear-gradient(45deg, var(--checkerboard-light) 25%, transparent 25%), linear-gradient(-45deg, var(--checkerboard-light) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checkerboard-light) 75%), linear-gradient(-45deg, transparent 75%, var(--checkerboard-light) 75%);",
+        "checkerboard-yellow":
+          "linear-gradient(45deg, var(--checkerboard-yellow) 25%, transparent 25%), linear-gradient(-45deg, var(--checkerboard-yellow) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checkerboard-yellow) 75%), linear-gradient(-45deg, transparent 75%, var(--checkerboard-yellow) 75%);",
       },
-
+      backgroundSize: {
+        "checkerboard-size-default":
+          "var(--checkerboard-size) var(--checkerboard-size)",
+      },
+      backgroundPosition: {
+        "checkerboard-position-default": "var(--checkerboard-position)",
+      },
     },
   },
   plugins: [],

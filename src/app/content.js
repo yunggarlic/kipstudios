@@ -14,7 +14,7 @@ export const spaceFeatures = [
     heading: "Production Packages",
     description:
       "Featuring a comprehensive range of production gear from high-tech cameras to advanced lighting solutions, our packages are designed to meet the diverse needs of Chicago's photography community.",
-    checkerboardColor: "gold",
+    checkerboardColor: "#fff67e",
   },
 ];
 

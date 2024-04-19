@@ -4,7 +4,7 @@ import { BookNow } from "./";
 
 const Navbar = () => {
   return (
-    <nav className="absolute top-0 left-0 px-4 desktop:px-10 w-full h-24 flex justify-between items-center gap-10">
+    <nav className="absolute top-0 left-0 w-full h-24 flex justify-between items-center gap-10 container-default">
       <Home />
       {/* <NavLinks /> */}
       <BookNow />

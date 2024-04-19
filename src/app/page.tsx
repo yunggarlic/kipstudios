@@ -1,6 +1,7 @@
 import { spaceFeatures as feats, testimonials } from "./content";
 
 import {
+  Amenities,
   Carousel,
   ContentSplit,
   Testimonials,
@@ -17,6 +18,7 @@ export default function Home() {
         <LeftColumn />
         <RightColumn />
       </ContentSplit>
+      <Amenities />
       <Testimonials testimonials={testimonials} />
       <ScheduleTour />
     </React.Fragment>
@@ -29,8 +31,9 @@ const LeftColumn = () => {
       <div className="flex flex-col gap-4">
         <h1>KIP studios</h1>
         <span>
-          1200 sq ft flexible production space available for by the hour
-          bookings located in the heart of the legendary Bucktown, Chicago
+          A multi-faceted 1200 sq ft flexible production space available for by
+          the hour bookings located in the heart of the legendary Bucktown,
+          Chicago
         </span>
       </div>
     );
@@ -56,7 +59,11 @@ const RightColumn = () => {
       <Carousel className="h-full" lazy={true}>
         {[1, 2, 3, 4, 5].map((i, index) => {
           return (
-            <ImageSlide key={i} i={index} src={`/images/kip-profile${i}.webp`} />
+            <ImageSlide
+              key={i}
+              i={index}
+              src={`/images/kip-profile${i}.webp`}
+            />
           );
         })}
       </Carousel>

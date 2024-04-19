@@ -7,6 +7,11 @@
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
   --checkerboard-light: #fafafa;
+  --checkerboard-yellow: #fff67e;
+  --checkerboard-size: 12rem;
+  --checkerboard-position: 0 0, 0 calc(var(--checkerboard-size) / 2),
+    calc(var(--checkerboard-size) / 2) calc(-1 * var(--checkerboard-size) / 2),
+    calc(-1 * var(--checkerboard-size) / 2) 0px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,22 +25,17 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       45deg,
       var(--checkerboard-light) 25%,
       transparent 25%
     ),
     linear-gradient(-45deg, var(--checkerboard-light) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, var(--checkerboard-light) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--checkerboard-light) 75%);
-  background-size: 192px 192px;
-  background-position: 0 0, 0 96px, 96px -96px, -96px 0px;
+    linear-gradient(-45deg, transparent 75%, var(--checkerboard-light) 75%); */
+  @apply bg-checkerboard-default bg-checkerboard-position-default bg-checkerboard-size-default;
+  /* background-size: var(--checkerboard-size) var(--checkerboard-size);
+  background-position: var(--checkerboard-position); */
 }
 
 * {
@@ -72,7 +72,24 @@ h3 {
     box-shadow: 0 0 9px white;
   }
 
-  .fade-out-two-sides{
-    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0,0,0,0.5) 5%,rgba(0,0,0,1) 10%, rgba(0, 0, 0, 1) 50%, rgba(0,0,0,1) 90%, rgba(0,0,0,0.5) 95%, rgba(0, 0, 0, 0) 100%);
+  .fade-out-two-sides {
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.5) 5%,
+      rgba(0, 0, 0, 1) 10%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 1) 90%,
+      rgba(0, 0, 0, 0.5) 95%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  .checkerboard-helper {
+    @apply bg-checkerboard-size-default bg-checkerboard-position-default;
+  }
+
+  .container-default {
+    @apply px-4 desktop:px-10;
   }
 }

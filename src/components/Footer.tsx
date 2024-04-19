@@ -2,7 +2,7 @@ import { Checkerboard, BookNow } from "./";
 
 const Footer = () => {
   return (
-    <footer className="flex items-end justify-between py-4 desktop:py-10 mt-auto">
+    <footer className="flex items-end justify-between py-4 desktop:py-10 container-default mt-auto">
       <div className="flex flex-col gap-4">
         <Checkerboard />
         <div className="flex flex-col">
