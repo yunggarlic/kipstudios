@@ -31,9 +31,9 @@ const LeftColumn = () => {
       <div className="flex flex-col gap-4">
         <h1>KIP studios</h1>
         <span>
-          A multi-faceted 1200 sq ft flexible production space available for by
-          the hour bookings located in the heart of the legendary Bucktown,
-          Chicago
+          A multi-faceted 1800 sq ft production and event space, flexible for
+          any need and available for by the hour bookings located in the heart
+          of the legendary Bucktown, Chicago
         </span>
       </div>
     );
