@@ -6,7 +6,7 @@ import "./Testimonials.css";
 
 const Testimonials = ({ testimonials }: TestimonialsProps) => {
   return (
-    <section className="flex flex-col w-full items-center gap-10">
+    <section className="flex flex-col w-full items-center gap-10 container-default">
       <h2>Testimonials</h2>
       <div className="flex flex-col items-center w-full gap-4">
         <div className="relative flex items-center gap-4 desktop:gap-10 w-full desktop:w-4/6">

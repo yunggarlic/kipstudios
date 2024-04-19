@@ -1,6 +1,6 @@
 const ScheduleTour = () => {
   return (
-    <div className="container-default flex flex-col items-center gap-10">
+    <div className="w-full container-default flex flex-col items-center gap-10">
       <h2>Not sure if the space fits your needs?</h2>
       <a
         target="_blank"
