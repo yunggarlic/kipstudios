@@ -25,7 +25,7 @@ const Carousel = ({
       loop={true}
       mousewheel={{ enabled: true }}
       {...swiperOptions}
-      modules={[Pagination, Mousewheel, ...(swiperOptions?.modules || [])]}
+      modules={[Pagination, ...(swiperOptions?.modules || [])]}
       className={`w-full ${className}`}
       onSlideChange={(e) => {
         e.slides[e.activeIndex].setAttribute("aria-hidden", "false");
