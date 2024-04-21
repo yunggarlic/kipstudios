@@ -8,31 +8,33 @@ const Amenities = () => {
     {
       heading: "Ambient Natural Lighting",
       description:
-        "Our primary space offers year-round ambient lighting for your shoot, equipped with wall-mounted rolling paper backdrops in a rainbow of colors.",
+        "Our primary space boasts year-round ambient lighting for your shoot, equipped with wall-mounted rolling paper backdrops in a rainbow of colors, vintage designer furniture, tables and chairs.",
     },
     {
-      heading: "The Blue Room",
-      description: "Equipped with a rare circular bed and themed props.",
+      heading: "Boudoir Suite",
+      description: "A 12 foot vaulted ceiling themed boudoir suite with a rare queen-sized circular bed, vintage vanity, and a full-length mirror, perfect for intimate portraits and lifestyle shoots.",
     },
   ];
   return (
-    <div className="flex flex-col gap-6 container-default bg-yellow-200 py-4 desktop:py-10">
-      <h2>Offering distinct features under the same roof.</h2>
-      {amenitiesContent.map((amenity, index) => (
-        <Amenity
-          key={index}
-          heading={amenity.heading}
-          description={amenity.description}
-        />
-      ))}
+    <div className="min-h-screen bg-yellow-200 bg-checkerboard-yellow bg-checkerboard-position-default bg-checkerboard-size-default flex justify-center container-default py-10 desktop:py-20">
+      <div className="desktop:w-1/2 flex flex-col items-center gap-24">
+        <h2 className="text-center h-screen desktop:h-[unset] flex justify-center items-center">Offering distinct features under the same roof.</h2>
+        {amenitiesContent.map((amenity, index) => (
+          <Amenity
+            key={index}
+            heading={amenity.heading}
+            description={amenity.description}
+          />
+        ))}
+      </div>
     </div>
   );
 };
 
 const Amenity = ({ heading, description }) => {
   return (
-    <div className="flex flex-col gap-2">
-      <h3>{heading}</h3>
+    <div className="flex flex-col gap-2 text-center">
+      <h3 className="text-2xl">{heading}</h3>
       <p>{description}</p>
     </div>
   );
