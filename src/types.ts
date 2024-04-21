@@ -20,7 +20,8 @@ interface BookingCardProps {
 }
 
 interface ContentSplitProps {
-  children: React.ReactNode[];
+  children?: React.ReactNode[];
+  className?: string;
 }
 
 interface ImageSlideProps {
