@@ -25,17 +25,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* background-image: linear-gradient(
-      45deg,
-      var(--checkerboard-light) 25%,
-      transparent 25%
-    ),
-    linear-gradient(-45deg, var(--checkerboard-light) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, var(--checkerboard-light) 75%),
-    linear-gradient(-45deg, transparent 75%, var(--checkerboard-light) 75%); */
-  @apply bg-checkerboard-default bg-checkerboard-position-default bg-checkerboard-size-default;
-  /* background-size: var(--checkerboard-size) var(--checkerboard-size);
-  background-position: var(--checkerboard-position); */
+  @apply checkerboard-default;
 }
 
 * {
@@ -43,7 +33,7 @@ body {
 }
 
 h1 {
-  @apply text-5xl;
+  @apply text-6xl;
 }
 
 h2 {
@@ -86,6 +76,10 @@ h3 {
 
   .checkerboard-helper {
     @apply bg-checkerboard-size-default bg-checkerboard-position-default;
+  }
+
+  .checkerboard-default {
+    @apply bg-checkerboard-default bg-checkerboard-size-default bg-checkerboard-position-default;
   }
 
   .container-default {
