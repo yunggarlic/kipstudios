@@ -7,7 +7,7 @@ const ImageSlide = ({ src, i }: ImageSlideProps) => {
         height={400}
         width={600}
         src={src}
-        fetchPriority={i === 0 ? "high" : "low"}
+        priority={i === 0 ? true : false}
         loading={i === 0 ? "eager" : "lazy"}
         alt="A large loft showing a floor to ceiling checkerboard room, and a tall white-painted loft."
       />
