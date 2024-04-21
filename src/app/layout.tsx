@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import { Barlow } from "next/font/google";
+import { Barlow, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const inter = Barlow({ weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], subsets: ["latin"] });
+const inter = Montserrat({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Kip Studios, Photo Studio and Event Space in Bucktown, Chicago",
-  description: "Premiere studio rental in Bucktown, Chicago. Available for by-the-hour rentals for photo and video shoots, events, and more.",
+  description:
+    "Premiere studio rental in Bucktown, Chicago. Available for by-the-hour rentals for photo and video shoots, events, and more.",
 };
 
 export default function RootLayout({
@@ -18,9 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen flex flex-col gap-10 desktop:gap-20`}>
+      <body
+        className={`${inter.className} relative min-h-screen flex flex-col`}
+      >
         <Navbar />
-        <main className="flex flex-col items-center justify-between gap-10 desktop:gap-20 mt-36 desktop:mt-48">
+        <main className="flex flex-col items-center justify-between">
           {children}
         </main>
         <Footer />
