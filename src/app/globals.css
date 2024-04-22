@@ -7,7 +7,9 @@
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
   --checkerboard-light: #fafafa;
-  --checkerboard-yellow: #fff67e;
+  --checkerboard-yellow: #ffdd7e;
+  --checkerboard-blue: hsl(212, 100%, 63%, 20%);
+  --checkerboard-green: hsl(120, 100%, 63%, 20%);
   --checkerboard-size: 12rem;
   --checkerboard-position: 0 0, 0 calc(var(--checkerboard-size) / 2),
     calc(var(--checkerboard-size) / 2) calc(-1 * var(--checkerboard-size) / 2),
@@ -26,10 +28,6 @@
 body {
   color: rgb(var(--foreground-rgb));
   @apply checkerboard-default;
-}
-
-* {
-  @apply transition;
 }
 
 h1 {
