@@ -6,46 +6,46 @@ import { useEffect, useState } from "react";
 const Navbar = () => {
   const [scrollDelta, setScrollDelta] = useState(0);
   const [isHidden, setIsHidden] = useState(false);
-  useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      const deltaY = e.deltaY;
-      if (deltaY < 0) {
-        setScrollDelta(0);
-        return;
-      }
-      setScrollDelta((prev) => prev + deltaY);
-    };
+  // useEffect(() => {
+  //   const handleWheel = (e: WheelEvent) => {
+  //     const deltaY = e.deltaY;
+  //     if (deltaY < 0) {
+  //       setScrollDelta(0);
+  //       return;
+  //     }
+  //     setScrollDelta((prev) => prev + deltaY);
+  //   };
 
-    window.addEventListener("wheel", handleWheel);
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, []);
+  //   window.addEventListener("wheel", handleWheel);
+  //   return () => window.removeEventListener("wheel", handleWheel);
+  // }, []);
 
-  useEffect(() => {
-    if (scrollDelta <= 0) {
-      setIsHidden(false);
-      return;
-    }
-    if (scrollDelta >= 96) {
-      setIsHidden(true);
-      return;
-    }
-  }, [scrollDelta]);
+  // useEffect(() => {
+  //   if (scrollDelta <= 0) {
+  //     setIsHidden(false);
+  //     return;
+  //   }
+  //   if (scrollDelta >= 96) {
+  //     setIsHidden(true);
+  //     return;
+  //   }
+  // }, [scrollDelta]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const nav = document.querySelector("nav");
-      if (window.scrollY > 0) {
-        nav?.classList.add("shadow-md");
-      } else {
-        nav?.classList.remove("shadow-md");
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const nav = document.querySelector("nav");
+  //     if (window.scrollY > 0) {
+  //       nav?.classList.add("shadow-md");
+  //     } else {
+  //       nav?.classList.remove("shadow-md");
+  //     }
+  //   };
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
   return (
     <nav
-      className={`transition-all duration-200 sticky z-20 top-0 left-0 w-full h-24 bg-white dark:bg-black ${
+      className={`transition-all duration-200  z-20 top-0 left-0 w-full h-24 bg-white dark:bg-black ${
         isHidden ? "top-[-6rem]" : ""
       }`}
     >
