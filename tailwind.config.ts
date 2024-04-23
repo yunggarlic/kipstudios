@@ -26,6 +26,10 @@ const config: Config = {
           "linear-gradient(45deg, var(--checkerboard-light) 25%, transparent 25%), linear-gradient(-45deg, var(--checkerboard-light) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checkerboard-light) 75%), linear-gradient(-45deg, transparent 75%, var(--checkerboard-light) 75%);",
         "checkerboard-yellow":
           "linear-gradient(45deg, var(--checkerboard-yellow) 25%, transparent 25%), linear-gradient(-45deg, var(--checkerboard-yellow) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checkerboard-yellow) 75%), linear-gradient(-45deg, transparent 75%, var(--checkerboard-yellow) 75%);",
+        "checkerboard-blue":
+          "linear-gradient(45deg, var(--checkerboard-blue) 25%, transparent 25%), linear-gradient(-45deg, var(--checkerboard-blue) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checkerboard-blue) 75%), linear-gradient(-45deg, transparent 75%, var(--checkerboard-blue) 75%);",
+        "checkerboard-green":
+          "linear-gradient(45deg, var(--checkerboard-green) 25%, transparent 25%), linear-gradient(-45deg, var(--checkerboard-green) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--checkerboard-green) 75%), linear-gradient(-45deg, transparent 75%, var(--checkerboard-green) 75%);",
       },
       backgroundSize: {
         "checkerboard-size-default":
