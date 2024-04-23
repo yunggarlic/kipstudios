@@ -4,8 +4,7 @@ const ImageSlide = ({ src, i }: ImageSlideProps) => {
     <div className="h-full overflow-hidden rounded">
       <Image
         className="h-full w-full object-cover aspect-square"
-        height={400}
-        width={600}
+        fill={true}
         src={src}
         priority={i === 0 ? true : false}
         loading={i === 0 ? "eager" : "lazy"}
