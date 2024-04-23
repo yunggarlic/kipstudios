@@ -23,7 +23,7 @@ export default function Home() {
         <LeftColumn />
         <RightColumn />
       </ContentSplit>
-      <Rooms />
+      {/* <Rooms /> */}
       <Testimonials testimonials={testimonials} />
       <ScheduleTour />
     </React.Fragment>
