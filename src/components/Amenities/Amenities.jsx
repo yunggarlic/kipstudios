@@ -3,7 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 // gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -33,13 +33,27 @@ const Amenities = () => {
     },
   ];
 
+  useEffect(() => {
+    function callAfterResize(func, delay) {
+      let dc = gsap.delayedCall(delay || 0.2, func).pause(),
+        handler = () => dc.restart(true);
+      window.addEventListener("resize", handler);
+      return handler; // in case you want to window.removeEventListener() later
+    }
+
+    const handler = callAfterResize(() => {
+      gsap.matchMediaRefresh();
+    });
+    return () => window.removeEventListener("resize", handler);
+  }, []);
+
   useGSAP(
     () => {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
           start: "top top",
-          end: `+=${ref.current.clientHeight * 3}`,
+          end: () => `+=${ref.current.clientHeight * 4}`,
           pin: true,
           scrub: 1,
           markers: true,
@@ -48,6 +62,7 @@ const Amenities = () => {
             delay: 0.1,
             duration: { min: 0.2, max: 0.5 },
           },
+          invalidateOnRefresh: true,
         },
       });
 
@@ -55,22 +70,30 @@ const Amenities = () => {
         .addLabel("start")
         .to(checkerboardYellow.current, { left: 0 })
         .addLabel("yellow-out-blue-in")
-        .to(checkerboardBlue.current, { left: 0 })
+        .fromTo(
+          checkerboardBlue.current,
+          { left: () => ref.current.clientWidth },
+          { left: 0 }
+        )
         .addLabel("blue-out-green-in")
-        .to(checkerboardGreen.current, { left: 0 })
-        .addLabel("end")
+        .fromTo(
+          checkerboardGreen.current,
+          { left: () => ref.current.clientWidth },
+          { left: 0 }
+        )
+        .addLabel("end");
     },
     { scope: ref }
   );
 
   return (
-    <div className="relative w-full overflow-x-hidden">
+    <div className="relative min-w-screen w-screen max-w-screen overflow-x-hidden">
       <div ref={ref} className="trigger flex w-[400vw] h-screen">
         <section
           ref={checkerboardYellow}
           className="absolute panel h-screen w-screen bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200"
         >
-          <div className="description flex items-center justify-center blue">
+          <div className="description w-full flex items-center justify-center blue">
             <div>
               <h1>Horizontal snapping sections (simple)</h1>
               <p>
