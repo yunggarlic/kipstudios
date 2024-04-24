@@ -9,7 +9,6 @@ import { useRef, useState, useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Amenities = () => {
-  const [isScrolling, setIsScrolling] = useState(false);
   const ref = useRef(null);
   const checkerboardYellow = useRef(null);
   const checkerboardBlue = useRef(null);
@@ -41,84 +40,83 @@ const Amenities = () => {
       return handler; // in case you want to window.removeEventListener() later
     }
 
-    const handler = callAfterResize(() => {
-      gsap.matchMediaRefresh();
-    });
+    const handler = callAfterResize(() => gsap.matchMediaRefresh());
+
     return () => window.removeEventListener("resize", handler);
   }, []);
 
   useGSAP(
-    () => {
+    (context, contextSafe) => {
+      const panels = gsap.utils.toArray(".panel");
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
           start: "top top",
-          end: () => `+=${ref.current.clientHeight * 4}`,
+          end: () => `+=${ref.current.clientHeight * panels.length}`,
           pin: true,
           scrub: 1,
           markers: true,
           snap: {
             snapTo: "labels",
             delay: 0.1,
-            duration: { min: 0.2, max: 0.5 },
+            duration: { min: 1, max: 3 },
           },
-          invalidateOnRefresh: true,
         },
       });
 
-      timeline
-        .addLabel("start")
-        .to(checkerboardYellow.current, { left: 0 })
-        .addLabel("yellow-out-blue-in")
-        .fromTo(
-          checkerboardBlue.current,
-          { left: () => ref.current.clientWidth },
-          { left: 0 }
-        )
-        .addLabel("blue-out-green-in")
-        .fromTo(
-          checkerboardGreen.current,
-          { left: () => ref.current.clientWidth },
-          { left: 0 }
-        )
-        .addLabel("end");
+      const handleClicks = panels.map((panel, i) => {
+        if (i === 0) timeline.addLabel(`panel-${i}`).to(panel, { left: 0 });
+        else {
+          timeline
+            .addLabel(`panel-${i}`)
+            .fromTo(panel, { left: () => window.innerWidth }, { left: 0 });
+        }
+
+        return contextSafe(() => {
+          const label = i === panels.length - 1 ? "end" : `panel-${i + 1}`;
+          gsap.to(window, {
+            scrollTo: timeline.scrollTrigger.labelToScroll(label), duration: 1
+          });
+        });
+      });
+
+      timeline.addLabel("end");
+      timeline.to(ref.current, { duration: 0.1 });
+
+      const buttons = gsap.utils.toArray(".amenity button");
+      buttons.forEach((button, i) => {
+        button.addEventListener("click", handleClicks[i]);
+      });
+
+      return () => {
+        buttons.forEach((button, i) => {
+          button.removeEventListener("click", handleClicks[i]);
+        });
+      };
     },
     { scope: ref }
   );
 
   return (
-    <div className="relative min-w-screen w-screen max-w-screen overflow-x-hidden">
-      <div ref={ref} className="trigger flex w-[400vw] h-screen">
-        <section
-          ref={checkerboardYellow}
-          className="absolute panel h-screen w-screen bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200"
-        >
-          <div className="description w-full flex items-center justify-center blue">
-            <div>
-              <h1>Horizontal snapping sections (simple)</h1>
-              <p>
-                Scroll vertically to scrub the horizontal animation. It also
-                dynamically snaps to the sections in an organic way based on the
-                velocity. The snapping occurs based on the natural ending
-                position after momentum is applied, not a simplistic "wherever
-                it is when the user stops".
-              </p>
-              <div className="scroll-down">
-                Scroll down<div className="arrow"></div>
-              </div>
+    <div className="relative w-full overflow-x-hidden">
+      <div ref={ref} className="trigger flex h-screen">
+        <section className="absolute panel h-screen w-screen flex items-center justify-center bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
+          <div className="description w-1/2 flex flex-col gap-10 items-center justify-center blue">
+            <h2 className="text-center">
+              Multiple scenes for your production all under one roof
+            </h2>
+            {amenitiesContent.map((amenity, i) => (
+              <Amenity key={`${amenity.heading}-${i}`} {...amenity} />
+            ))}
+            <div className="scroll-down">
+              Scroll down<div className="arrow"></div>
             </div>
           </div>
         </section>
-        <section
-          ref={checkerboardBlue}
-          className="absolute left-[100vw] panel bg-checkerboard-blue bg-checkerboard-size-default bg-checkerboard-position-default bg-blue-200 flex items-center justify-center h-screen w-screen"
-        >
+        <section className="absolute panel bg-checkerboard-blue bg-checkerboard-size-default bg-checkerboard-position-default bg-blue-200 flex items-center justify-center h-screen w-screen">
           ONE
         </section>
-        <section
-          ref={checkerboardGreen}
-          className="absolute left-[100vw] panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200"
-        >
+        <section className="absolute panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200">
           TWO
         </section>
       </div>
@@ -129,13 +127,16 @@ const Amenities = () => {
 const Amenity = ({ heading, description }) => {
   const [isHidden, setIsHidden] = useState(true);
   return (
-    <div className="flex flex-col gap-4">
-      <button className="flex flex-col desktop:justify-center gap-2 text-2xl text-left desktop:text-center">
-        <h3 className="">{heading}</h3>
+    <div className="amenity flex flex-col gap-4">
+      <button
+        onClick={() => setIsHidden((prev) => !prev)}
+        className="flex flex-col desktop:justify-center gap-2  text-left desktop:text-center"
+      >
+        <h3 className="text-2xl">{heading}</h3>
+        <p className={`text-justify ${isHidden ? "hidden" : "visible"}`}>
+          {description}
+        </p>
       </button>
-      <p className={`text-justify ${isHidden ? "hidden" : "visible"}`}>
-        {description}
-      </p>
     </div>
   );
 };
