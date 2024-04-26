@@ -23,7 +23,6 @@ const Carousel = ({
       spaceBetween={18}
       pagination={{ clickable: true }}
       loop={true}
-      mousewheel={{ enabled: true }}
       {...swiperOptions}
       modules={[Pagination, ...(swiperOptions?.modules || [])]}
       className={`w-full ${className}`}
