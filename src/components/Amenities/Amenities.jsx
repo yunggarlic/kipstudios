@@ -10,10 +10,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Amenities = () => {
   const ref = useRef(null);
-  const checkerboardYellow = useRef(null);
-  const checkerboardBlue = useRef(null);
-  const checkerboardGreen = useRef(null);
-  const textRef = useRef(null);
+  const [activeAmenity, setActiveAmenity] = useState("");
   const amenitiesContent = [
     {
       heading: "Floor to ceiling checkerboard",
@@ -48,49 +45,56 @@ const Amenities = () => {
   useGSAP(
     (context, contextSafe) => {
       const panels = gsap.utils.toArray(".panel");
-      const timeline = gsap.timeline({
+      const pinTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
           start: "top top",
-          end: () => `+=${ref.current.clientHeight * panels.length}`,
+          end: () => `+=${ref.current.clientHeight}`,
           pin: true,
-          scrub: 1,
           markers: true,
-          snap: {
-            snapTo: "labels",
-            delay: 0.1,
-            duration: { min: 1, max: 3 },
-          },
         },
       });
 
+      const timeline = gsap.timeline({ duration: { value: 0.5, max: 1 } });
+
       const handleClicks = panels.map((panel, i) => {
-        if (i === 0) timeline.addLabel(`panel-${i}`).to(panel, { left: 0 });
-        else {
-          timeline
-            .addLabel(`panel-${i}`)
-            .fromTo(panel, { left: () => window.innerWidth }, { left: 0 });
-        }
+        timeline
+          .addLabel(`panel-${i}`)
+          .fromTo(
+            panel,
+            { left: () => window.innerWidth },
+            { left: 0 },
+            `panel-${i}`
+          )
+          .addPause(`panel-${i}`);
 
         return contextSafe(() => {
           const label = i === panels.length - 1 ? "end" : `panel-${i + 1}`;
-          gsap.to(window, {
-            scrollTo: timeline.scrollTrigger.labelToScroll(label), duration: 1
-          });
+          timeline.tweenTo(label);
         });
       });
 
-      timeline.addLabel("end");
-      timeline.to(ref.current, { duration: 0.1 });
+      const handleReturn = () => {
+        timeline.tweenTo("panel-0");
+      };
 
-      const buttons = gsap.utils.toArray(".amenity button");
-      buttons.forEach((button, i) => {
+      const amenityButtons = gsap.utils.toArray(".amenity-button button");
+      amenityButtons.forEach((button, i) => {
         button.addEventListener("click", handleClicks[i]);
       });
 
+      const backButtons = gsap.utils.toArray(".amenity-back-button");
+      backButtons.forEach((button) => {
+        button.addEventListener("click", handleReturn);
+      });
+      timeline.pause();
+
       return () => {
-        buttons.forEach((button, i) => {
+        amenityButtons.forEach((button, i) => {
           button.removeEventListener("click", handleClicks[i]);
+        });
+        backButtons.forEach((button) => {
+          button.removeEventListener("click", handleReturn);
         });
       };
     },
@@ -100,44 +104,43 @@ const Amenities = () => {
   return (
     <div className="relative w-full overflow-x-hidden">
       <div ref={ref} className="trigger flex h-screen">
-        <section className="absolute panel h-screen w-screen flex items-center justify-center bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
+        <section className="absolute h-screen w-screen flex items-center justify-center bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
           <div className="description w-1/2 flex flex-col gap-10 items-center justify-center blue">
             <h2 className="text-center">
               Multiple scenes for your production all under one roof
             </h2>
-            {amenitiesContent.map((amenity, i) => (
-              <Amenity key={`${amenity.heading}-${i}`} {...amenity} />
+            {amenitiesContent.map((amenityButton, i) => (
+              <AmenityButton
+                key={`${amenityButton.heading}-${i}`}
+                {...amenityButton}
+              />
             ))}
-            <div className="scroll-down">
-              Scroll down<div className="arrow"></div>
-            </div>
           </div>
         </section>
-        <section className="absolute panel bg-checkerboard-blue bg-checkerboard-size-default bg-checkerboard-position-default bg-blue-200 flex items-center justify-center h-screen w-screen">
-          ONE
-        </section>
-        <section className="absolute panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200">
-          TWO
-        </section>
+        {amenitiesContent.map((amenity, i) => {
+          console.log(i);
+          return <Amenity />;
+        })}
       </div>
     </div>
   );
 };
 
-const Amenity = ({ heading, description }) => {
-  const [isHidden, setIsHidden] = useState(true);
+const AmenityButton = ({ heading, description }) => {
   return (
-    <div className="amenity flex flex-col gap-4">
-      <button
-        onClick={() => setIsHidden((prev) => !prev)}
-        className="flex flex-col desktop:justify-center gap-2  text-left desktop:text-center"
-      >
+    <div className="amenity-button flex flex-col gap-4">
+      <button className="flex flex-col desktop:justify-center gap-2  text-left desktop:text-center">
         <h3 className="text-2xl">{heading}</h3>
-        <p className={`text-justify ${isHidden ? "hidden" : "visible"}`}>
-          {description}
-        </p>
       </button>
     </div>
+  );
+};
+
+const Amenity = () => {
+  return (
+    <section className="absolute panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200">
+      <button className="amenity-back-button">Return</button>
+    </section>
   );
 };
 
