@@ -10,7 +10,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Amenities = () => {
   const ref = useRef(null);
-  const [activeAmenity, setActiveAmenity] = useState("");
   const amenitiesContent = [
     {
       heading: "Floor to ceiling checkerboard",
@@ -55,27 +54,16 @@ const Amenities = () => {
         },
       });
 
-      const timeline = gsap.timeline({ duration: { value: 0.5, max: 1 } });
+      const timeline = gsap.timeline({});
 
       const handleClicks = panels.map((panel, i) => {
-        timeline
-          .addLabel(`panel-${i}`)
-          .fromTo(
-            panel,
-            { left: () => window.innerWidth },
-            { left: 0 },
-            `panel-${i}`
-          )
-          .addPause(`panel-${i}`);
-
         return contextSafe(() => {
-          const label = i === panels.length - 1 ? "end" : `panel-${i + 1}`;
-          timeline.tweenTo(label);
+          gsap.fromTo(panel, { left: () => window.innerWidth }, { left: 0 });
         });
       });
 
       const handleReturn = () => {
-        timeline.tweenTo("panel-0");
+        gsap.to(".panel", { left: () => window.innerWidth });
       };
 
       const amenityButtons = gsap.utils.toArray(".amenity-button button");
@@ -118,7 +106,6 @@ const Amenities = () => {
           </div>
         </section>
         {amenitiesContent.map((amenity, i) => {
-          console.log(i);
           return <Amenity />;
         })}
       </div>
@@ -137,9 +124,16 @@ const AmenityButton = ({ heading, description }) => {
 };
 
 const Amenity = () => {
+  const ref = useRef(null);
+
   return (
-    <section className="absolute panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200">
-      <button className="amenity-back-button">Return</button>
+    <section
+      ref={ref}
+      className="left-[100%] absolute panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200"
+    >
+      <button className="absolute top-4 left-4 amenity-back-button">
+        Return
+      </button>
     </section>
   );
 };
