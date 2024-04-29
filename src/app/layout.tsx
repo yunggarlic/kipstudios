@@ -26,7 +26,7 @@ export default function RootLayout({
         className={`${inter.className} relative min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main className="flex flex-col items-center justify-between">
+        <main className="relative flex flex-col items-center justify-between">
           {children}
         </main>
         <Footer />

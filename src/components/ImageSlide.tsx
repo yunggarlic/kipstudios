@@ -1,10 +1,10 @@
 import Image from "next/image";
-const ImageSlide = ({ src, i }: ImageSlideProps) => {
+const ImageSlide = ({ src, i, fill = true }: ImageSlideProps) => {
   return (
     <div className="h-full overflow-hidden rounded">
       <Image
         className="h-full w-full object-cover aspect-square"
-        fill={true}
+        fill={fill}
         src={src}
         priority={i === 0 ? true : false}
         loading={i === 0 ? "eager" : "lazy"}

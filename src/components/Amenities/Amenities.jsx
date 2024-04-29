@@ -4,8 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { useRef, useState, useEffect } from "react";
+import { Arrow } from "../";
 
-// gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const Amenities = () => {
@@ -47,24 +47,43 @@ const Amenities = () => {
       const pinTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: ref.current,
-          start: "top top",
-          end: () => `+=${ref.current.clientHeight}`,
-          pin: true,
-          markers: true,
+          start: "top center",
         },
       });
 
-      const timeline = gsap.timeline({});
+      pinTimeline.fromTo(
+        ".amenity-button",
+        { opacity: 0 },
+        { opacity: 1, stagger: 0.2 }
+      );
 
-      const handleClicks = panels.map((panel, i) => {
-        return contextSafe(() => {
-          gsap.fromTo(panel, { left: () => window.innerWidth }, { left: 0 });
-        });
-      });
+      const { handleReturns, handleClicks } = panels.reduce((acc, panel, i) => {
+        const tl = gsap
+          .timeline()
+          .fromTo(
+            panel,
+            {
+              height: panel.parentElement.offsetHeight,
+              left: () => window.innerWidth,
+            },
+            { left: 0 }
+          )
+          .to(panel, {
+            height: () => window.innerHeight,
+            ease: "power2.inOut",
+          })
+          .to(window, { scrollTo: { y: panel } }, "<");
 
-      const handleReturn = () => {
-        gsap.to(".panel", { left: () => window.innerWidth });
-      };
+        if (acc["handleReturns"])
+          acc["handleReturns"].push(contextSafe(() => tl.reverse()));
+        else acc["handleReturns"] = [contextSafe(() => tl.reverse())];
+
+        if (acc["handleClicks"])
+          acc["handleClicks"].push(contextSafe(() => tl.play()));
+        else acc["handleClicks"] = [contextSafe(() => tl.play())];
+
+        return acc;
+      }, {});
 
       const amenityButtons = gsap.utils.toArray(".amenity-button button");
       amenityButtons.forEach((button, i) => {
@@ -72,10 +91,9 @@ const Amenities = () => {
       });
 
       const backButtons = gsap.utils.toArray(".amenity-back-button");
-      backButtons.forEach((button) => {
-        button.addEventListener("click", handleReturn);
+      backButtons.forEach((button, i) => {
+        button.addEventListener("click", handleReturns[i]);
       });
-      timeline.pause();
 
       return () => {
         amenityButtons.forEach((button, i) => {
@@ -90,19 +108,21 @@ const Amenities = () => {
   );
 
   return (
-    <div className="relative w-full overflow-x-hidden">
-      <div ref={ref} className="trigger flex h-screen">
-        <section className="absolute h-screen w-screen flex items-center justify-center bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
-          <div className="description w-1/2 flex flex-col gap-10 items-center justify-center blue">
-            <h2 className="text-center">
+    <div className="overflow-hidden w-full">
+      <div ref={ref} className="trigger flex">
+        <section className="container-default py-10 desktop:py-20 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
+          <div className="description flex gap-10 blue">
+            <h2 className="w-1/2 text-4xl desktop:text-6xl mb-10">
               Multiple scenes for your production all under one roof
             </h2>
-            {amenitiesContent.map((amenityButton, i) => (
-              <AmenityButton
-                key={`${amenityButton.heading}-${i}`}
-                {...amenityButton}
-              />
-            ))}
+            <div className="w-1/2 flex flex-col items-end gap-10">
+              {amenitiesContent.map((amenityButton, i) => (
+                <AmenityButton
+                  key={`${amenityButton.heading}-${i}`}
+                  {...amenityButton}
+                />
+              ))}
+            </div>
           </div>
         </section>
         {amenitiesContent.map((amenity, i) => {
@@ -116,8 +136,9 @@ const Amenities = () => {
 const AmenityButton = ({ heading, description }) => {
   return (
     <div className="amenity-button flex flex-col gap-4">
-      <button className="flex flex-col desktop:justify-center gap-2  text-left desktop:text-center">
-        <h3 className="text-2xl">{heading}</h3>
+      <button className="flex items-center justify-between desktop:justify-center gap-4 text-left desktop:text-center">
+        <h3 className="text-2xl desktop:text-4xl">{heading}</h3>
+        <Arrow />
       </button>
     </div>
   );
@@ -129,7 +150,7 @@ const Amenity = () => {
   return (
     <section
       ref={ref}
-      className="left-[100%] absolute panel flex items-center justify-center h-screen w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200"
+      className="left-[100%] h-full z-10 absolute panel flex items-center justify-center w-screen bg-checkerboard-green bg-checkerboard-size-default bg-checkerboard-position-default bg-green-200"
     >
       <button className="absolute top-4 left-4 amenity-back-button">
         Return

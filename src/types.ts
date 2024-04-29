@@ -27,6 +27,7 @@ interface ContentSplitProps {
 interface ImageSlideProps {
   src: string;
   i: number;
+  fill?: boolean;
 }
 
 interface TestimonialProps {
@@ -39,6 +40,7 @@ interface TestimonialsProps {
 
 interface GalleryProps {
   numImages: number;
+  children: React.ReactNode[];
 }
 
 type Testimonial = {
