@@ -59,7 +59,7 @@ const Amenities = () => {
 
       const { handleReturns, handleClicks } = panels.reduce((acc, panel, i) => {
         const tl = gsap
-          .timeline()
+          .timeline({ paused: true })
           .fromTo(
             panel,
             {
@@ -68,11 +68,15 @@ const Amenities = () => {
             },
             { left: 0 }
           )
-          .to(panel, {
-            height: () => window.innerHeight,
-            ease: "power2.inOut",
-          })
-          .to(window, { scrollTo: { y: panel } }, "<");
+          .to(window, { scrollTo: { y: () => ref.current } })
+          .to(
+            [ref.current, panel],
+            {
+              height: () => window.innerHeight,
+              ease: "power2.inOut",
+            },
+            "<"
+          );
 
         if (acc["handleReturns"])
           acc["handleReturns"].push(contextSafe(() => tl.reverse()));
@@ -99,8 +103,8 @@ const Amenities = () => {
         amenityButtons.forEach((button, i) => {
           button.removeEventListener("click", handleClicks[i]);
         });
-        backButtons.forEach((button) => {
-          button.removeEventListener("click", handleReturn);
+        backButtons.forEach((button, i) => {
+          button.removeEventListener("click", handleReturns[i]);
         });
       };
     },
