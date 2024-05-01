@@ -39,9 +39,18 @@ interface TestimonialsProps {
 }
 
 interface GalleryProps {
-  numImages: number;
   children: React.ReactNode[];
+  className?: string;
 }
+
+interface AmenityProps {
+  heading: string;
+  description: string;
+  imgPaths: string[];
+  checkerboardColors: string
+}
+
+type ImageFolder = "boudoir" | "checkerboard" | "whiteroom";
 
 type Testimonial = {
   eventType: string;
