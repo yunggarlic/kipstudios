@@ -1,5 +1,15 @@
-const Arrow = () => (
-  <svg className="overflow-visible w-[18px] h-[18px] hover:w-[36px] mr-2 transition-all">
+const Arrow = ({
+  flip,
+  hover = false,
+}: {
+  flip?: boolean;
+  hover?: boolean;
+}) => (
+  <svg
+    className={`${flip ? "rotate-180" : ""} ${
+      hover ? "w-[36px]" : ""
+    } overflow-visible w-[18px] h-[18px] hover:w-[36px] mr-2 transition-all`}
+  >
     <defs>
       <marker
         id="m"
@@ -17,8 +27,8 @@ const Arrow = () => (
       y1="50%"
       x2="100%"
       y2="50%"
-      stroke-width="2"
-      marker-end="url(#m)"
+      strokeWidth="2"
+      markerEnd="url(#m)"
       stroke="black"
     />
   </svg>
