@@ -12,7 +12,7 @@ const inter = Montserrat({
 export const metadata: Metadata = {
   title: "Kip Studios, Photo Studio and Event Space in Bucktown, Chicago",
   description:
-    "Premiere studio rental in Bucktown, Chicago. Available for by-the-hour rentals for photo and video shoots, events, and more.",
+    "Premiere studio rental in Bucktown, Chicago. By-the-hour rentals available for photo and video shoots, events, and more.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
         className={`${inter.className} relative min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main className="relative flex flex-col items-center justify-between">
+        <main className="overflow-hidden relative flex flex-col items-center justify-between">
           {children}
         </main>
         <Footer />
