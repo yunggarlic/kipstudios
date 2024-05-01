@@ -10,6 +10,7 @@
   --checkerboard-yellow: #ffdd7e;
   --checkerboard-blue: hsl(212, 100%, 63%, 20%);
   --checkerboard-green: hsl(120, 100%, 63%, 20%);
+  --checkerboard-red: hsla(0, 100%, 50%, 0.2);
   --checkerboard-size: 12rem;
   --checkerboard-position: 0 0, 0 calc(var(--checkerboard-size) / 2),
     calc(var(--checkerboard-size) / 2) calc(-1 * var(--checkerboard-size) / 2),
