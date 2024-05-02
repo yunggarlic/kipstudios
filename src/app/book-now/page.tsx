@@ -1,5 +1,5 @@
 import { links } from "./content";
-import BookingCard from "../../components/BookingCard";
+import BookingCard from "../../components/BookingCard/BookingCard";
 
 export default function BookNow() {
   return (
