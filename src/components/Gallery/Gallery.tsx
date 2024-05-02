@@ -1,5 +1,5 @@
 "use client";
-import { Carousel } from "./";
+import { Carousel } from "..";
 import { Grid } from "swiper/modules";
 import "swiper/css/grid";
 import Image from "next/image";

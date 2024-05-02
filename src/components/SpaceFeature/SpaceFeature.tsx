@@ -1,4 +1,4 @@
-import Checkerboard from "./Checkerboard";
+import Checkerboard from "../Checkerboard/Checkerboard";
 import DOMPurify from "isomorphic-dompurify";
 
 const SpaceFeature = ({

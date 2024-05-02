@@ -1,4 +1,4 @@
-import { Checkerboard, BookNow } from "./";
+import { Checkerboard, BookNow } from "..";
 
 const Footer = () => {
   return (
