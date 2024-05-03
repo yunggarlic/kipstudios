@@ -110,7 +110,8 @@ export const getAmenityAnimations = (ref, contextSafe) => {
             ease: "power2.inOut",
           },
           "<"
-        );
+        )
+        .fromTo(".amenity-content", { opacity: 0 }, { opacity: 1 });
 
       if (acc["handleReturns"])
         acc["handleReturns"].push(
