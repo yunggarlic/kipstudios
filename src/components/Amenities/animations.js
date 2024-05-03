@@ -104,7 +104,7 @@ export const getAmenityAnimations = (ref, contextSafe) => {
         )
         .to(window, { scrollTo: () => ref.current, onComplete: () => {} })
         .to(
-          [panel],
+          [ref.current, panel],
           {
             height: () => window.innerHeight,
             ease: "power2.inOut",

@@ -33,12 +33,12 @@ const Amenities = () => {
   return (
     <div ref={ref} className="w-full">
       <div className="trigger flex">
-        <section className="h-screen desktop:h-full container-default py-10 desktop:py-20 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
-          <div className="description flex gap-10 blue">
-            <h2 className="w-1/2 text-4xl desktop:text-6xl mb-10">
+        <section className="desktop:h-screen container-default py-10 desktop:py-20 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
+          <div className="description flex flex-col desktop:flex-row gap-10 blue">
+            <h2 className="desktop:w-1/2 text-4xl desktop:text-6xl mb-10">
               Multiple scenes for your production all under one roof
             </h2>
-            <div className="w-1/2 flex flex-col items-start gap-10">
+            <div className="desktop:w-1/2 flex flex-col items-start gap-10">
               {amenitiesContent.map((amenityButton, i) => (
                 <AmenityButton
                   key={`${amenityButton.heading}-${i}`}
@@ -87,18 +87,18 @@ const Amenity = ({
       className={`overflow-hidden left-[100%] w-full h-full container-default z-10 absolute panel flex items-center justify-center bg-checkerboard-size-default bg-checkerboard-position-default ${checkerboardColors}`}
     >
       <ContentSplit className="amenity-content">
-        <div className=" relative w-1/2 flex items-center">
+        <div className="relative desktop:w-1/2 flex flex-col-reverse gap-10 desktop:flex-row desktop:items-center">
           <button
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            className="flex flex-row items-center gap-4 absolute top-0 left-0 amenity-back-button"
+            className="flex flex-row items-center gap-4 desktop:my-0 desktop:absolute top-0 left-0 amenity-back-button"
           >
             <Arrow flip={true} hover={hover} />
             Return
           </button>
-          <h4 className="font-bold text-2xl desktop:text-4xl text-left">{description}</h4>
+          <h4 className="font-bold text-xl desktop:text-4xl text-left">{description}</h4>
         </div>
-        <div className="w-1/2 flex items-center">
+        <div className="order-first desktop:order-[unset] h-full desktop:w-1/2 flex items-center">
           <Carousel className="h-full">
             {imgPaths.map((imgPath, index) => {
               return <ImageSlide key={imgPath} i={index} src={imgPath} />;
