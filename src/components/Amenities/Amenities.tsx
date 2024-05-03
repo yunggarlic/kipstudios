@@ -33,9 +33,9 @@ const Amenities = () => {
   return (
     <div ref={ref} className="w-full">
       <div className="trigger flex">
-        <section className="desktop:h-screen container-default py-10 desktop:py-20 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
-          <div className="description flex flex-col desktop:flex-row gap-10 blue">
-            <h2 className="desktop:w-1/2 text-4xl desktop:text-6xl mb-10">
+        <section className="container-default py-10 desktop:py-20 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
+          <div className="description flex flex-col gap-10 desktop:flex-row desktop:gap-10 blue">
+            <h2 className="desktop:w-1/2 text-4xl desktop:text-6xl">
               Multiple scenes for your production all under one roof
             </h2>
             <div className="desktop:w-1/2 flex flex-col items-start gap-10">
