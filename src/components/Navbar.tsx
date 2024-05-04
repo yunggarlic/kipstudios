@@ -45,7 +45,7 @@ const Navbar = () => {
   // }, []);
   return (
     <nav
-      className={`transition-all duration-200  z-20 top-0 left-0 w-full h-24 bg-white dark:bg-black ${
+      className={`transition-all duration-200  z-20 top-0 left-0 w-full h-24 bg-white ${
         isHidden ? "top-[-6rem]" : ""
       }`}
     >

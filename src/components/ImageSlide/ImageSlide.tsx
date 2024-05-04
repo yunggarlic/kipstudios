@@ -11,7 +11,7 @@ const ImageSlide = ({ src, i, fill = true }: ImageSlideProps) => {
         alt="A large loft showing a floor to ceiling checkerboard room, and a tall white-painted loft."
       />
       {i > 0 && (
-        <div className="swiper-lazy-preloader dark:swiper-lazy-preloader-white"></div>
+        <div className="swiper-lazy-preloader"></div>
       )}
     </div>
   );
