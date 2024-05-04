@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { BookNow } from "./";
+import { BookNow } from "..";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
