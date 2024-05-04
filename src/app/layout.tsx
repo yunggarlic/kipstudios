@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -11,7 +11,7 @@ const inter = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Kip Studios, Photo Studio and Event Space in Bucktown, Chicago",
+  title: "Kip Studios, Bucktown Photo Studio & Event Space",
   description:
     "Premiere studio rental in Bucktown, Chicago. By-the-hour rentals available for photo and video shoots, events, and more.",
 };
