@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -22,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleAnalytics gaId="G-FC20952VWK" />
       <body
         className={`${inter.className} relative min-h-screen flex flex-col`}
       >
