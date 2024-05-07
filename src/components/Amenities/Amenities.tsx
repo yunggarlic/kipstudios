@@ -33,7 +33,7 @@ const Amenities = () => {
   return (
     <div ref={ref} className="w-full">
       <div className="trigger flex">
-        <section className="container-default py-10 desktop:py-20 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
+        <section className="container-default py-8 desktop:py-10 w-screen flex bg-checkerboard-yellow bg-checkerboard-size-default bg-checkerboard-position-default bg-yellow-200">
           <div className="description flex flex-col gap-10 desktop:flex-row desktop:gap-10 blue">
             <h2 className="desktop:w-1/2 text-4xl desktop:text-6xl">
               Multiple scenes for your production all under one roof
@@ -84,9 +84,9 @@ const Amenity = ({
   return (
     <section
       ref={ref}
-      className={`overflow-hidden left-[100%] w-full h-full container-default z-10 absolute panel flex items-center justify-center bg-checkerboard-size-default bg-checkerboard-position-default ${checkerboardColors}`}
+      className={`py-4 overflow-hidden left-[100%] w-full h-full container-default z-10 absolute panel flex items-center justify-center bg-checkerboard-size-default bg-checkerboard-position-default ${checkerboardColors}`}
     >
-      <ContentSplit className="amenity-content">
+      <ContentSplit className="amenity-content !px-0">
         <div className="relative desktop:w-1/2 flex flex-col-reverse gap-10 desktop:flex-row desktop:items-center">
           <button
             onMouseEnter={() => setHover(true)}
@@ -101,7 +101,7 @@ const Amenity = ({
         <div className="order-first desktop:order-[unset] h-full desktop:w-1/2 flex items-center">
           <Carousel className="h-full">
             {imgPaths.map((imgPath, index) => {
-              return <ImageSlide key={imgPath} i={index} src={imgPath} />;
+              return <ImageSlide key={imgPath} i={index} src={imgPath} containerClassName="h-full" className="h-full" />;
             })}
           </Carousel>
         </div>
