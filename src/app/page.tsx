@@ -51,6 +51,7 @@ export default function Home() {
           width={1200}
           height={800}
           src="/images/studio-imgs/what-you-get/1.jpg"
+          alt="A set of colored backdrops against a white wall"
         />
       </ContentSplit>
       <Gallery className=" w-full container-default py-4 desktop:py-10">
