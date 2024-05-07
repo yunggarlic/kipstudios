@@ -28,6 +28,8 @@ interface ImageSlideProps {
   src: string;
   i: number;
   fill?: boolean;
+  className?: string;
+  containerClassName?: string;
 }
 
 interface TestimonialProps {
@@ -47,7 +49,7 @@ interface AmenityProps {
   heading: string;
   description: string;
   imgPaths: string[];
-  checkerboardColors: string
+  checkerboardColors: string;
 }
 
 type ImageFolder = "boudoir" | "checkerboard" | "whiteroom";
