@@ -9,7 +9,7 @@ const ImageSlide = ({
   return (
     <div className={`${containerClassName} overflow-hidden rounded`}>
       <Image
-        className={`h-full w-full object-cover aspect-square ${className}`}
+        className={`h-full w-full aspect-square ${className}`}
         width={1200}
         height={800}
         src={src}

@@ -2,7 +2,7 @@ export const amenitiesContent = [
   {
     heading: "Ambient Natural Lighting",
     description:
-      "Our primary space boasts year-round ambient lighting for your shoot, equipped with wall-mounted rolling paper backdrops in a rainbow of colors, vintage designer furniture, tables and chairs.",
+      "Our primary space boasts year-round ambient lighting for your shoot and is equipped with wall-mounted rolling paper backdrops in a rainbow of colors, vintage designer furniture, tables and chairs. Perfect for any kind of shoot, from lifestyle and fashion to portraits and product photography.",
     imgPaths: [1, 2, 3, 4, 5].map(
       (i) => `/images/studio-imgs/whiteroom/${i}.webp`
     ),

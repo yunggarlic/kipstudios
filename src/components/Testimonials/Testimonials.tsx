@@ -9,10 +9,10 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
     <section className="flex flex-col w-full items-center gap-10 container-default py-4 desktop:py-10">
       <h2>Testimonials</h2>
       <div className="flex flex-col items-center w-full gap-4">
-        <div className="relative flex items-center gap-4 desktop:gap-10 w-full desktop:w-4/6">
+        <div className="relative flex w-full">
           <div className="swiper-button-prev !hidden desktop:!block" />
           <Carousel
-            className="desktop:fade-out-two-sides"
+            className=""
             swiperOptions={{
               height: 300,
               centeredSlides: true,
@@ -36,7 +36,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
 
               breakpoints: {
                 1024: {
-                  slidesPerView: 1.2,
+                  slidesPerView: 3,
                   navigation: { enabled: true },
                   pagination: { enabled: false },
                 },

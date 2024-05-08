@@ -23,10 +23,11 @@ export const getAmenityAnimations = (ref, contextSafe) => {
         .fromTo(
           panel,
           {
+            visibility: "hidden",
             height: panel.parentElement.offsetHeight,
             left: () => window.innerWidth,
           },
-          { left: 0 }
+          { left: 0, visibility: "visible" }
         )
         .to(window, { scrollTo: () => ref.current, onComplete: () => {} })
         .to(

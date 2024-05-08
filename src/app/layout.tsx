@@ -28,7 +28,7 @@ export default function RootLayout({
         className={`${inter.className} relative min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main className="overflow-hidden relative flex flex-col items-center justify-between">
+        <main className="my-auto overflow-hidden relative flex flex-col items-center justify-between">
           {children}
         </main>
         <Footer />

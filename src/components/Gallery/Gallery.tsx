@@ -2,7 +2,6 @@
 import { Carousel } from "..";
 import { Grid } from "swiper/modules";
 import "swiper/css/grid";
-import Image from "next/image";
 
 const Gallery = ({ children, className }: GalleryProps) => {
   return (
@@ -17,8 +16,12 @@ const Gallery = ({ children, className }: GalleryProps) => {
           loop: true,
           modules: [Grid],
           breakpoints: {
-            1024: {
+            1024:{
               slidesPerView: 2,
+              grid: { rows: 2 },
+            },
+            1200: {
+              slidesPerView: 4,
               grid: { rows: 2 },
             },
           },
