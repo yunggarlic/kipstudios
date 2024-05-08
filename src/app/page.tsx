@@ -57,7 +57,7 @@ export default function Home() {
       <Gallery className=" w-full container-default py-4 desktop:py-10">
         {images.map((imgPath, index) => {
           return (
-            <ImageSlide key={imgPath} i={index} src={path.join(imgPath)} />
+            <ImageSlide containerClassName="h-full" key={imgPath} i={index} src={path.join(imgPath)} />
           );
         })}
       </Gallery>
