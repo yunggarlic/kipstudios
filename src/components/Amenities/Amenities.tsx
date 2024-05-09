@@ -105,7 +105,7 @@ const Amenity = ({
           <button
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            className="flex flex-row items-center gap-4 desktop:my-0 desktop:absolute top-0 left-0 amenity-back-button"
+            className="flex flex-row items-center w-fit gap-4 desktop:my-0 desktop:absolute top-0 left-0 amenity-back-button"
           >
             <div
               className={`absolute transform scale-0 rounded-full w-[50px] h-[50px] ${
@@ -128,7 +128,7 @@ const Amenity = ({
                   i={index}
                   src={imgPath}
                   containerClassName="desktop:h-full"
-                  className="object-cover aspect-square desktop:h-full desktop:aspect-unset desktop:object-cover"
+                  className="object-cover desktop:h-full desktop:aspect-unset desktop:object-cover"
                 />
               );
             })}
