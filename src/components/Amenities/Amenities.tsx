@@ -119,7 +119,7 @@ const Amenity = ({
             {description}
           </h4>
         </div>
-        <div className="order-first desktop:order-[unset] h-full desktop:w-1/2 flex items-center">
+        <div className="order-first max-h-[70%] desktop:max-h-[unset] desktop:order-[unset] h-full desktop:w-1/2 flex items-center">
           <Carousel className="h-full">
             {imgPaths.map((imgPath, index) => {
               return (
@@ -127,8 +127,8 @@ const Amenity = ({
                   key={imgPath}
                   i={index}
                   src={imgPath}
-                  containerClassName="h-full"
-                  className="h-full object-cover"
+                  containerClassName="desktop:h-full"
+                  className="object-cover aspect-square desktop:h-full desktop:aspect-unset desktop:object-cover"
                 />
               );
             })}
