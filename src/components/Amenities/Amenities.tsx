@@ -13,18 +13,18 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const Amenities = () => {
   const ref = useRef(null);
 
-  useEffect(() => {
-    function callAfterResize(func: Function, delay?: number) {
-      let dc = gsap.delayedCall(delay || 0.2, func).pause(),
-        handler = () => dc.restart(true);
-      window.addEventListener("resize", handler);
-      return handler; // in case you want to window.removeEventListener() later
-    }
+  // useEffect(() => {
+  //   function callAfterResize(func: Function, delay?: number) {
+  //     let dc = gsap.delayedCall(delay || 0.2, func).pause(),
+  //       handler = () => dc.restart(true);
+  //     window.addEventListener("resize", handler);
+  //     return handler; // in case you want to window.removeEventListener() later
+  //   }
 
-    const handler = callAfterResize(() => gsap.matchMediaRefresh());
+  //   const handler = callAfterResize(() => gsap.matchMediaRefresh());
 
-    return () => window.removeEventListener("resize", handler);
-  }, []);
+  //   return () => window.removeEventListener("resize", handler);
+  // }, []);
 
   useGSAP((context, contextSafe) => getAmenityAnimations(ref, contextSafe), {
     scope: ref,
