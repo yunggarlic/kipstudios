@@ -13,19 +13,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const Amenities = () => {
   const ref = useRef(null);
 
-  // useEffect(() => {
-  //   function callAfterResize(func: Function, delay?: number) {
-  //     let dc = gsap.delayedCall(delay || 0.2, func).pause(),
-  //       handler = () => dc.restart(true);
-  //     window.addEventListener("resize", handler);
-  //     return handler; // in case you want to window.removeEventListener() later
-  //   }
-
-  //   const handler = callAfterResize(() => gsap.matchMediaRefresh());
-
-  //   return () => window.removeEventListener("resize", handler);
-  // }, []);
-
   useGSAP((context, contextSafe) => getAmenityAnimations(ref, contextSafe), {
     scope: ref,
   });
@@ -101,11 +88,11 @@ const Amenity = ({
       className={`invisible py-4 overflow-hidden left-[100%] w-full container-default z-10 absolute panel flex items-center justify-center bg-checkerboard-size-default bg-checkerboard-position-default ${checkerboardColors}`}
     >
       <ContentSplit className="amenity-content !px-0">
-        <div className="relative desktop:w-1/2 flex flex-col-reverse desktop:gap-10 h-full desktop:flex-row desktop:items-center">
+        <div className="relative desktop:w-1/2 flex flex-col-reverse gap-10 desktop:gap-10  desktop:flex-row desktop:items-center">
           <button
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            className="flex flex-row items-center w-fit gap-4 desktop:my-0 desktop:absolute top-0 left-0 amenity-back-button"
+            className="flex flex-row items-center w-fit gap-4 desktop:my-0 desktop:absolute top-0 left-0 amenity-back-button transition border-b pb-1 border-transparent hover:border-black"
           >
             <div
               className={`absolute transform scale-0 rounded-full w-[50px] h-[50px] ${
@@ -115,7 +102,7 @@ const Amenity = ({
             <Arrow flip={true} hover={hover} />
             Return
           </button>
-          <h4 className="font-bold text-xl desktop:text-4xl text-left mb-auto desktop:mb-[unset]">
+          <h4 className="font-bold text-xl desktop:text-4xl desktop:text-left ">
             {description}
           </h4>
         </div>
