@@ -98,10 +98,10 @@ const Amenity = ({
   return (
     <section
       ref={ref}
-      className={`invisible py-4 overflow-hidden left-[100%] w-full h-full container-default z-10 absolute panel flex items-center justify-center bg-checkerboard-size-default bg-checkerboard-position-default ${checkerboardColors}`}
+      className={`invisible py-4 overflow-hidden left-[100%] w-full container-default z-10 absolute panel flex items-center justify-center bg-checkerboard-size-default bg-checkerboard-position-default ${checkerboardColors}`}
     >
       <ContentSplit className="amenity-content !px-0">
-        <div className="relative desktop:w-1/2 flex flex-col-reverse gap-10 desktop:flex-row desktop:items-center">
+        <div className="relative desktop:w-1/2 flex flex-col-reverse desktop:gap-10 h-full desktop:flex-row desktop:items-center">
           <button
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
@@ -115,11 +115,11 @@ const Amenity = ({
             <Arrow flip={true} hover={hover} />
             Return
           </button>
-          <h4 className="font-bold text-xl desktop:text-4xl text-left">
+          <h4 className="font-bold text-xl desktop:text-4xl text-left mb-auto">
             {description}
           </h4>
         </div>
-        <div className="order-first max-h-[70%] desktop:max-h-[unset] desktop:order-[unset] h-full desktop:w-1/2 flex items-center">
+        <div className="order-first max-h-[70%] h-full desktop:max-h-[unset] desktop:order-[unset] desktop:w-1/2 flex items-center">
           <Carousel className="h-full">
             {imgPaths.map((imgPath, index) => {
               return (
@@ -127,6 +127,7 @@ const Amenity = ({
                   key={imgPath}
                   i={index}
                   src={imgPath}
+                  fill={true}
                   containerClassName="desktop:h-full"
                   className="object-cover desktop:h-full desktop:aspect-unset desktop:object-cover"
                 />

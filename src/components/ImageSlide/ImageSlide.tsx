@@ -2,7 +2,7 @@ import Image from "next/image";
 const ImageSlide = ({
   src,
   i,
-  fill = true,
+  fill = false,
   className = "",
   containerClassName,
 }: ImageSlideProps) => {
@@ -10,9 +10,10 @@ const ImageSlide = ({
     <div className={`${containerClassName} overflow-hidden rounded`}>
       <Image
         className={`h-full w-full aspect-square ${className}`}
-        width={1200}
-        height={800}
+        width={fill ? undefined : 1200}
+        height={fill ? undefined : 800}
         src={src}
+        fill={fill}
         priority={i === 0 ? true : false}
         loading={i === 0 ? "eager" : "lazy"}
         alt="A large loft showing a floor to ceiling checkerboard room, and a tall white-painted loft."
