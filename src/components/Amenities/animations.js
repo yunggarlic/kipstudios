@@ -108,7 +108,7 @@ export const getAmenityAnimations = (ref, contextSafe) => {
         .to(
           [ref.current, panel],
           {
-            height: () => window.outerHeight,
+            height: () => window.innerHeight,
             ease: "power2.inOut",
           },
           "<"
