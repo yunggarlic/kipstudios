@@ -115,7 +115,7 @@ const Amenity = ({
             <Arrow flip={true} hover={hover} />
             Return
           </button>
-          <h4 className="font-bold text-xl desktop:text-4xl text-left mb-auto">
+          <h4 className="font-bold text-xl desktop:text-4xl text-left mb-auto desktop:mb-[unset]">
             {description}
           </h4>
         </div>
