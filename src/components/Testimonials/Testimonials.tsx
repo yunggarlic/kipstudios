@@ -12,11 +12,11 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
         <div className="relative flex w-full">
           <div className="swiper-button-prev !hidden desktop:!block" />
           <Carousel
-            className=""
+            className="desktop:fade-out-two-sides"
             swiperOptions={{
               height: 300,
               centeredSlides: true,
-              slidesPerView: 1,
+              slidesPerView: 1.2,
               spaceBetween: 18,
               autoplay: {
                 delay: 5000,
@@ -36,7 +36,7 @@ const Testimonials = ({ testimonials }: TestimonialsProps) => {
 
               breakpoints: {
                 1024: {
-                  slidesPerView: 3,
+                  slidesPerView: 2.5,
                   navigation: { enabled: true },
                   pagination: { enabled: false },
                 },

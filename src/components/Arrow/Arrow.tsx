@@ -6,9 +6,7 @@ const Arrow = ({
   hover?: boolean;
 }) => (
   <svg
-    className={`${flip ? "rotate-180 ml-2 mr-0" : ""} ${
-      hover ? "w-[36px]" : ""
-    } overflow-visible w-[18px] h-[18px] hover:w-[36px] ml-0 mr-2 transition-all`}
+    className={`${flip ? "rotate-180 ml-2 mr-0" : ""}  overflow-visible w-[18px] h-[18px] ml-0 mr-2 transition-all`}
   >
     <defs>
       <marker
